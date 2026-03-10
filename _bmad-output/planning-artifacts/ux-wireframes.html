@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fanflare UX Wireframes - Core Loop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#0f0f0f',
+                        'brand-gray': '#1a1a1a',
+                        'compliant-green': '#22c55e',
+                        'trust-blue': '#3b82f6',
+                        'warning-red': '#ef4444',
+                        'attention-yellow': '#eab308'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f0f0f; color: #e5e5e5; background-image: radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%), url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.005'/%3E%3C/svg%3E"); }
+        .wireframe { border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 32px; margin: 32px; background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); position: relative; }
+        .wireframe::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.01'/%3E%3C/svg%3E"); border-radius: 16px; pointer-events: none; }
+        .drag-area { border: 2px dotted rgba(59, 130, 246, 0.5); border-radius: 12px; padding: 56px; text-align: center; margin: 32px 0; background: rgba(15, 15, 15, 0.6); backdrop-filter: blur(15px); box-shadow: inset 0 4px 16px rgba(0, 0, 0, 0.2); }
+        .badge { padding: 16px 20px; border-radius: 12px; display: inline-block; margin: 16px; backdrop-filter: blur(15px); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3); transition: box-shadow 0.2s ease; cursor: pointer; min-height: 48px; min-width: 48px; }
+        .badge:hover, .badge:focus { box-shadow: 0 8px 32px rgba(34, 197, 94, 0.2), 0 6px 24px rgba(0, 0, 0, 0.3); outline: 2px solid #3b82f6; outline-offset: 2px; }
+        .green { background: rgba(34, 197, 94, 0.8); color: #0f0f0f; border: 1px solid rgba(34, 197, 94, 0.3); }
+        .red { background: rgba(239, 68, 68, 0.8); color: #e5e5e5; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .gray { background: rgba(42, 42, 42, 0.8); color: #a1a1a1; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .popover { position: absolute; background: rgba(26, 26, 26, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 24px; width: 320px; backdrop-filter: blur(25px); box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5); }
+        .tab { cursor: pointer; padding: 20px; border-bottom: 2px solid transparent; backdrop-filter: blur(10px); transition: border-color 0.2s ease; }
+        .tab.active { border-bottom-color: #22c55e; }
+        .content { display: none; }
+        .content.active { display: block; }
+    </style>
+</head>
+<body class="bg-brand-dark text-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-bold mb-4 text-center">Fanflare UX Wireframes - Core Loop (Mobile-First)</h1>
+        <p class="mb-4 text-center">Dark mode default, iPhone viewport simulation. Annotations show interactions/states.</p>
+
+        <div class="tabs flex justify-center mb-4">
+            <div class="tab active" onclick="showTab(0)">Upload / Drag-Drop</div>
+            <div class="tab" onclick="showTab(1)">Badge + Tooltip</div>
+            <div class="tab" onclick="showTab(2)">Schedule Popover</div>
+            <div class="tab" onclick="showTab(3)">Dashboard Tease</div>
+        </div>
+
+        <div class="wireframe content active">
+            <h2 class="text-xl mb-2">1. Upload / Drag-Drop Screen</h2>
+            <div class="drag-area">
+                <p>📁 Drag media here or tap to select</p>
+                <p class="text-sm mt-2">Queue: 0 items</p>
+            </div>
+            <div class="mt-4">
+                <p class="text-sm">After drop: Instant green badge appears</p>
+                <div class="badge green">R18+ Compliant (92%)</div>
+            </div>
+            <div class="mt-4 p-2 bg-gray-800 rounded">
+                <p class="text-sm">Offline Banner: "Offline mode — changes saved locally"</p>
+            </div>
+            <p class="text-xs mt-2">Annotations: Touch targets 48px min, haptic on drop, queue auto-updates.</p>
+        </div>
+
+        <div class="wireframe content">
+            <h2 class="text-xl mb-2">2. Green Badge + Tooltip Interaction</h2>
+            <div class="badge green cursor-pointer" onclick="togglePopover()">R18+ Compliant (92%)</div>
+            <div class="popover hidden" id="tooltip">
+                <p><strong>Safe — auto-checked vs Classification Board criteria.</strong></p>
+                <p class="text-sm mt-2">92% confidence. Override if needed.</p>
+            </div>
+            <div class="mt-4">
+                <div class="badge red">Flagged (Override?)</div>
+                <div class="badge gray">Pending (Offline)</div>
+            </div>
+            <p class="text-xs mt-2">Annotations: Tap badge for tooltip, ARIA live region for state changes, focus-visible rings.</p>
+        </div>
+
+        <div class="wireframe content">
+            <h2 class="text-xl mb-2">3. Schedule Popover / Confirmation</h2>
+            <div class="popover">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMmEyYTJhIi8+Cjwvc3ZnPg==" alt="Thumbnail" class="w-16 h-16 rounded mb-2">
+                <p><strong>Post Title</strong></p>
+                <p class="text-sm">Time: 8:00 PM (Smart suggestion)</p>
+                <p class="text-sm text-compliant-green">+18% expected reach</p>
+                <button class="mt-4 px-4 py-2 bg-compliant-green text-brand-dark rounded">Confirm Schedule</button>
+            </div>
+            <div class="mt-4 p-2 bg-compliant-green text-brand-dark rounded">
+                <p>✅ Posted! First views coming in… (Haptic)</p>
+            </div>
+            <p class="text-xs mt-2">Annotations: Keyboard nav (arrows for time), aria-describedby for lift prediction, success toast with animation.</p>
+        </div>
+
+        <div class="wireframe content">
+            <h2 class="text-xl mb-2">4. Dashboard Home Tease</h2>
+            <div class="space-y-4">
+                <div class="p-4 bg-gray-800 rounded">
+                    <p class="font-bold">Earnings This Week</p>
+                    <p class="text-2xl text-compliant-green">$247.50</p>
+                    <p class="text-sm">+15% vs last week</p>
+                </div>
+                <div class="p-4 bg-gray-800 rounded">
+                    <p class="font-bold">Recent Activity</p>
+                    <p class="text-sm">Post "New Look" live — 12 views</p>
+                    <p class="text-sm">Payout $98.20 processed</p>
+                </div>
+            </div>
+            <div class="fixed bottom-0 left-0 right-0 bg-gray-800 p-4 flex justify-around">
+                <div>🏠 Home</div>
+                <div>📅 Bookings</div>
+                <div>📤 Queue</div>
+                <div>💰 Earnings</div>
+                <div>👤 Profile</div>
+            </div>
+            <div class="fixed bottom-4 right-4 w-12 h-12 bg-compliant-green rounded-full flex items-center justify-center text-brand-dark">➕</div>
+            <p class="text-xs mt-2">Annotations: Bottom tabs persistent, FAB for upload, earnings preview with transparency, scalable to 3-4 columns on desktop.</p>
+        </div>
+    </div>
+
+    <script>
+        function showTab(index) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.content');
+            tabs.forEach((tab, i) => {
+                tab.classList.toggle('active', i === index);
+            });
+            contents.forEach((content, i) => {
+                content.classList.toggle('active', i === index);
+            });
+        }
+
+        function togglePopover() {
+            const popover = document.getElementById('tooltip');
+            popover.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

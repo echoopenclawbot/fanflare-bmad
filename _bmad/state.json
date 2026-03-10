@@ -1,0 +1,87 @@
+{
+  "projectName": "Fanflare",
+  "projectPath": "/home/loki/.openclaw/workspace-bmad",
+  "createdAt": "2026-03-08T01:12:37.322Z",
+  "currentPhase": "solutioning",
+  "activeWorkflow": null,
+  "completedWorkflows": [
+    {
+      "id": "create-product-brief",
+      "agentId": "analyst",
+      "outputFile": "/home/loki/.openclaw/workspace-bmad/_bmad-output/planning-artifacts/product-brief-Fanflare-{{date}}.md",
+      "completedAt": "2026-03-08T01:54:28.479Z"
+    },
+    {
+      "id": "domain-research",
+      "agentId": "analyst",
+      "outputFile": "/home/loki/.openclaw/workspace-bmad/_bmad-output/analysis-artifacts/domain-research-Fanflare-2026-03-08.md",
+      "completedAt": "2026-03-08T02:43:15.034Z"
+    },
+    {
+      "id": "create-prd",
+      "agentId": "pm",
+      "outputFile": "/home/loki/.openclaw/workspace-bmad/_bmad-output/planning-artifacts/prd.md",
+      "completedAt": "2026-03-09T01:10:59.720Z"
+    },
+    {
+      "id": "create-architecture",
+      "agentId": "architect",
+      "outputFile": "/home/loki/.openclaw/workspace-bmad/_bmad-output/planning-artifacts/architecture.md",
+      "completedAt": "2026-03-09T04:59:28.098Z"
+    },
+    {
+      "id": "create-ux-design",
+      "agentId": "ux-designer",
+      "outputFile": "/home/loki/.openclaw/workspace-bmad/_bmad-output/planning-artifacts/ux-design-specification.md",
+      "completedAt": "2026-03-09T07:22:13.566Z"
+    },
+    {
+      "id": "brainstorming",
+      "agentId": "analyst",
+      "outputFile": "/home/loki/.openclaw/workspace-bmad/_bmad-output/brainstorming/brainstorming-session-2026-03-10.md",
+      "completedAt": "2026-03-10T05:38:43.995Z"
+    },
+    {
+      "id": "create-product-brief",
+      "agentId": "analyst",
+      "outputFile": "/home/loki/.openclaw/workspace-bmad/_bmad-output/planning-artifacts/product-brief-Fanflare-{{date}}.md",
+      "completedAt": "2026-03-10T05:49:15.090Z"
+    },
+    {
+      "id": "document-project",
+      "agentId": "analyst",
+      "outputFile": "",
+      "completedAt": "2026-03-10T05:50:25.336Z"
+    },
+    {
+      "id": "technical-research",
+      "agentId": "analyst",
+      "outputFile": "/home/loki/.openclaw/workspace-bmad/_bmad-output/analysis-artifacts/technical-research-Fanflare-2026-03-10.md",
+      "completedAt": "2026-03-10T07:57:07.297Z"
+    },
+    {
+      "id": "create-product-brief",
+      "agentId": "analyst",
+      "outputFile": "/home/loki/.openclaw/workspace-bmad/_bmad-output/planning-artifacts/product-brief-Fanflare-{{date}}.md",
+      "completedAt": "2026-03-10T08:08:15.202Z"
+    },
+    {
+      "id": "edit-prd",
+      "agentId": "pm",
+      "outputFile": "/home/loki/.openclaw/workspace-bmad/_bmad-output/edit-prd-output.md",
+      "completedAt": "2026-03-10T08:11:16.984Z"
+    },
+    {
+      "id": "validate-prd",
+      "agentId": "pm",
+      "outputFile": "/home/loki/.openclaw/workspace-bmad/_bmad-output/validation-reports/prd-validation-report.md",
+      "completedAt": "2026-03-10T08:14:35.472Z"
+    },
+    {
+      "id": "create-epics-and-stories",
+      "agentId": "pm",
+      "outputFile": "/home/loki/.openclaw/workspace-bmad/epics-and-stories.md",
+      "completedAt": "2026-03-10T08:22:09.065Z"
+    }
+  ]
+}

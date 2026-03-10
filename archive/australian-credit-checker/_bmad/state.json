@@ -1,0 +1,18 @@
+{
+  "projectName": "Australian Credit Score Checker",
+  "projectPath": "/home/loki/.openclaw/workspace-bmad/australian-credit-checker",
+  "createdAt": "2026-03-06T14:15:59.374Z",
+  "currentPhase": "analysis",
+  "activeWorkflow": {
+    "id": "create-product-brief",
+    "agentId": "analyst",
+    "agentName": "Mary",
+    "mode": "normal",
+    "currentStep": 1,
+    "totalSteps": 6,
+    "currentStepFile": "/home/loki/.openclaw/extensions/bmad-method/bmad-method/bmm/workflows/1-analysis/create-product-brief/steps/step-01-init.md",
+    "outputFile": "",
+    "startedAt": "2026-03-06T14:16:19.710Z"
+  },
+  "completedWorkflows": []
+}

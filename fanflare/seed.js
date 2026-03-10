@@ -1,7 +1,7 @@
 async function main() {
   const [{ PrismaPg }, { PrismaClient }, bcryptModule] = await Promise.all([
     import('@prisma/adapter-pg'),
-    import('./src/generated/client.ts'),
+    import('@prisma/client'),
     import('bcryptjs'),
   ]);
 
@@ -16,8 +16,14 @@ async function main() {
 
   try {
     const hashedPassword = await bcrypt.hash('password', 10);
-    const user = await prisma.user.create({
-      data: {
+    const user = await prisma.user.upsert({
+      where: { email: 'agency@example.com' },
+      update: {
+        name: 'Agency Owner',
+        password: hashedPassword,
+        role: 'AGENCY_OWNER',
+      },
+      create: {
         email: 'agency@example.com',
         name: 'Agency Owner',
         password: hashedPassword,
@@ -25,7 +31,7 @@ async function main() {
       },
     });
 
-    console.log('Created user:', user);
+    console.log('Seeded user:', user.email);
   } finally {
     await prisma.$disconnect();
   }

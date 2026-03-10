@@ -1,10 +1,8 @@
 import { NextAuthOptions } from 'next-auth';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import { PrismaClient } from '@prisma/client';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
-
-const prisma = new PrismaClient();
+import { prisma } from './prisma';
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -38,7 +36,7 @@ export const authOptions: NextAuthOptions = {
           email: user.email,
           name: user.name,
           role: user.role,
-          tenantId: user.tenantId,
+          tenantId: user.tenantId ?? undefined,
         };
       },
     }),
@@ -53,7 +51,7 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.role = user.role;
-        token.tenantId = user.tenantId;
+        token.tenantId = user.tenantId ?? undefined;
       }
       return token;
     },
@@ -61,7 +59,7 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         session.user.id = token.sub!;
         session.user.role = token.role;
-        session.user.tenantId = token.tenantId;
+        session.user.tenantId = token.tenantId ?? undefined;
       }
       return session;
     },

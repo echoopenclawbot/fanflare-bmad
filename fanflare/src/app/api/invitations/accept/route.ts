@@ -7,15 +7,19 @@ export async function POST(request: NextRequest) {
     token?: string;
     name?: string;
     password?: string;
+    consentAccepted?: boolean;
   };
 
   const token = body.token?.trim() ?? '';
   const name = body.name?.trim() ?? '';
   const password = body.password ?? '';
 
-  if (!token || !name || password.length < 8) {
+  if (!token || !name || password.length < 8 || !body.consentAccepted) {
     return NextResponse.json(
-      { error: 'Token, name, and a password with at least 8 characters are required' },
+      {
+        error:
+          'Token, name, consent acknowledgement, and a password with at least 8 characters are required',
+      },
       { status: 400 }
     );
   }
@@ -47,6 +51,7 @@ export async function POST(request: NextRequest) {
           password: hashedPassword,
           role: invitation.role,
           tenantId: invitation.tenantId,
+          consentAcceptedAt: new Date(),
         },
       });
     } else {
@@ -57,6 +62,7 @@ export async function POST(request: NextRequest) {
           password: hashedPassword,
           role: invitation.role,
           tenantId: invitation.tenantId,
+          consentAcceptedAt: new Date(),
         },
       });
     }

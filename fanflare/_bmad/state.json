@@ -1,0 +1,19 @@
+{
+  "projectName": "Fanflare",
+  "projectPath": "/home/loki/.openclaw/workspace-bmad/fanflare",
+  "createdAt": "2026-03-11T02:05:42.101Z",
+  "currentPhase": "analysis",
+  "activeWorkflow": {
+    "id": "create-product-brief",
+    "agentId": "analyst",
+    "agentName": "Mary",
+    "mode": "yolo",
+    "currentStep": 2,
+    "totalSteps": 6,
+    "currentStepFile": "/home/loki/.openclaw/extensions/bmad-method/bmad-method/bmm/workflows/1-analysis/create-product-brief/steps/step-02-vision.md",
+    "outputFile": "/home/loki/.openclaw/workspace-bmad/fanflare/_bmad-output/planning-artifacts/product-brief.md",
+    "startedAt": "2026-03-11T02:05:59.822Z",
+    "lastSavedStep": 2
+  },
+  "completedWorkflows": []
+}

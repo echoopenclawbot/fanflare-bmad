@@ -15,6 +15,7 @@ export default function InviteAcceptPage({ params }: InvitePageProps) {
 function InviteAcceptForm({ token }: { token: string }) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [consentAccepted, setConsentAccepted] = useState(false);
   const [error, setError] = useState('');
   const [accepted, setAccepted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -28,7 +29,7 @@ function InviteAcceptForm({ token }: { token: string }) {
       const response = await fetch('/api/invitations/accept', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token, name, password }),
+        body: JSON.stringify({ token, name, password, consentAccepted }),
       });
 
       const data = (await response.json()) as { error?: string };
@@ -45,57 +46,64 @@ function InviteAcceptForm({ token }: { token: string }) {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black/5 p-6">
-      <div className="w-full max-w-md rounded-xl border bg-white p-6 shadow">
-        <h1 className="mb-2 text-2xl font-semibold">Accept your Fanflare invite</h1>
-        <p className="mb-6 text-sm text-gray-600">
-          Finish setup to join your tenant with the assigned role.
-        </p>
+    <div className="flex min-h-screen items-center justify-center p-6">
+      <div className="glass-card w-full max-w-md p-6 text-white shadow">
+        <div className="glass-content">
+          <h1 className="mb-2 text-2xl font-semibold text-white">Accept your Fanflare invite</h1>
+          <p className="glass-muted mb-6 text-sm">
+            Finish profile setup and acknowledge consent to activate your account.
+          </p>
 
-        {accepted ? (
-          <div className="space-y-4">
-            <p className="rounded bg-green-50 p-3 text-green-700">
-              Invite accepted. You can now sign in with your email and password.
-            </p>
-            <a href="/auth/signin" className="inline-block rounded bg-blue-600 px-4 py-2 text-white">
-              Go to sign in
-            </a>
-          </div>
-        ) : (
-          <form className="space-y-4" onSubmit={acceptInvite}>
-            <div>
-              <label className="mb-1 block text-sm font-medium">Full name</label>
-              <input
-                className="w-full rounded border p-2"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
+          {accepted ? (
+            <div className="space-y-4">
+              <p className="rounded-xl bg-emerald-500/15 p-3 text-emerald-100">
+                Invite accepted. You can now sign in with your email and password.
+              </p>
+              <a href="/auth/signin" className="glass-button inline-block">
+                Go to sign in
+              </a>
             </div>
+          ) : (
+            <form className="space-y-4" onSubmit={acceptInvite}>
+              <div>
+                <label className="mb-1 block text-sm font-medium text-slate-100">Full name</label>
+                <input className="glass-input" value={name} onChange={(e) => setName(e.target.value)} required />
+              </div>
 
-            <div>
-              <label className="mb-1 block text-sm font-medium">Password</label>
-              <input
-                type="password"
-                className="w-full rounded border p-2"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                minLength={8}
-                required
-              />
-            </div>
+              <div>
+                <label className="mb-1 block text-sm font-medium text-slate-100">Password</label>
+                <input
+                  type="password"
+                  className="glass-input"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  minLength={8}
+                  required
+                />
+              </div>
 
-            {error ? <p className="text-sm text-red-600">{error}</p> : null}
+              <label className="rounded-xl border border-white/20 bg-white/10 p-3 text-sm text-slate-100 flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  checked={consentAccepted}
+                  onChange={(e) => setConsentAccepted(e.target.checked)}
+                  className="mt-1"
+                  required
+                />
+                <span>
+                  I acknowledge the platform consent and usage requirements and want to activate my
+                  account for the assigned tenant role.
+                </span>
+              </label>
 
-            <button
-              type="submit"
-              className="rounded bg-black px-4 py-2 text-white disabled:opacity-60"
-              disabled={submitting}
-            >
-              {submitting ? 'Accepting…' : 'Accept invitation'}
-            </button>
-          </form>
-        )}
+              {error ? <p className="text-sm text-red-200">{error}</p> : null}
+
+              <button type="submit" className="glass-button w-full disabled:opacity-60" disabled={submitting}>
+                {submitting ? 'Accepting…' : 'Complete onboarding'}
+              </button>
+            </form>
+          )}
+        </div>
       </div>
     </div>
   );

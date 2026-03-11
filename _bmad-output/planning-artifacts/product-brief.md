@@ -26,7 +26,7 @@ Fanflare is a unified management platform designed specifically for adult entert
 
 ### Problem Statement
 
-Adult entertainment agencies face significant challenges in managing multiple creators, coordinating content production, ensuring regulatory compliance, and optimizing monetization across fragmented tools and platforms. Current solutions are disjointed, time-consuming, and often fail to address the unique needs of the industry, leading to inefficiencies, compliance risks, and missed revenue opportunities.
+Adult entertainment agencies face significant challenges in managing multiple creators, coordinating content production offline in rural AU shoots, ensuring proactive regulatory compliance (R18+, ATO), and optimizing monetization across fragmented tools (OnlyFans, tube sites, websites). Current solutions are disjointed, time-consuming, and fail to address industry needs, leading to burnout, compliance risks, and missed revenue in a growing $100B+ market.
 
 ### Problem Impact
 
@@ -38,15 +38,16 @@ Existing tools are either too generic (lacking industry-specific features) or to
 
 ### Proposed Solution
 
-Fanflare provides a comprehensive, integrated platform that combines creator management, content planning, fan engagement, compliance automation, and analytics in one unified system. Built with industry-specific features and robust security, Fanflare enables agencies to operate efficiently at scale while ensuring compliance and maximizing creator and agency revenue.
+Fanflare is the empathetic, AU-centric operating system for adult agencies: end-to-end from booking shoots to handling compliant payouts, all integrated with OnlyFans for seamless "content-to-cash" pipelines. Includes offline-first resilience, ethical AI co-pilot, and proactive compliance to reduce admin time by 30-50% and boost revenue 20-40%.
 
 ### Key Differentiators
 
 - **Industry Specialization**: Purpose-built for adult entertainment with features like content classification, age verification integration, and regulatory reporting
 - **Unified Workflow**: Single platform covering the entire agency lifecycle from creator onboarding to monetization tracking
-- **AI-Driven Insights**: Machine learning for content optimization, fan behavior prediction, and personalized recommendations
-- **Compliance-First Design**: Built-in tools for regulatory compliance, secure data handling, and audit trails
-- **Scalable Architecture**: Cloud-native design supporting agencies from startup to enterprise scale
+- **AI-Driven Insights**: Ethical AI co-pilot for content optimization, fan behavior prediction, and personalized recommendations with opt-ins and bias audits
+- **Compliance-First Design**: Proactive compliance tools for regulatory requirements, secure data handling, and immutable audit trails
+- **Offline-First Resilience**: Designed for rural AU shoots with poor connectivity, ensuring workflows never break on set
+- **Scalable Architecture**: Cloud-native design supporting agencies from 5-50 models with multi-tenant isolation
 
 ## Market Analysis
 
@@ -73,27 +74,33 @@ Fanflare differentiates from generic CRMs and creator tools by embedding AU regs
 
 ### Primary Users
 
-**Agency Manager Persona: Sarah Chen**
+**Agency Manager Persona: Mia Thompson**
 
-Sarah is a 35-year-old agency manager at a mid-sized adult entertainment agency in Sydney. She oversees 20+ creators, managing their content schedules, promotional campaigns, and revenue streams. Her background is in marketing, and she's passionate about helping creators succeed in a competitive industry.
+Mia is a 35-year-old boutique agency owner in Sydney managing 12 models. She juggles bookings, content approvals, and payouts manually across platforms, facing burnout and compliance anxiety.
 
-**Problem Experience:** Sarah spends hours coordinating across multiple platforms (OnlyFans, social media, payment processors), manually tracking creator performance, and ensuring compliance with Australian regulations. Current tools are fragmented, leading to data silos, missed opportunities, and compliance risks.
+**Problem Experience:** Mia spends 30-40 hours/week on admin tasks coordinating fragmented tools (OnlyFans, calendars, spreadsheets), ensuring R18+ compliance, and tracking earnings without data silos.
 
-**Success Vision:** With Fanflare, Sarah would have a unified dashboard showing creator performance, automated compliance checks, and AI-driven insights for optimization. She'd reduce administrative time by 50% and increase agency revenue through better data-driven decisions.
+**Success Vision:** Fanflare provides a unified dashboard with offline resilience, AI co-pilot insights, and automated compliance, reducing admin time by 30-50% and boosting revenue 20-40%.
 
-**Key Interactions:** Daily dashboard reviews, creator onboarding, campaign planning, financial reporting, compliance monitoring.
+**Key Interactions:** Booking shoots, content uploads, promotion scheduling, revenue tracking, compliance monitoring.
 
 ### Secondary Users
 
-**Content Creator: Alex Rivera**
+**Content Creator: Taylor**
 
-Alex is a 28-year-old professional adult entertainer working with multiple agencies. He creates content across platforms but struggles with inconsistent management and unclear revenue tracking.
+Taylor is a 25-year-old professional adult entertainer working with agencies, anxious about privacy breaches, unclear payouts, and lack of control.
 
-**Problem Experience:** Alex deals with different agency interfaces, manual contract management, and difficulty tracking earnings across platforms.
+**Problem Experience:** Taylor reviews contracts and approvals via emails/WhatsApp, struggles with privacy, payouts, and brand control.
 
-**Success Vision:** Fanflare provides creators with clear visibility into their performance, automated scheduling, and direct communication with agency managers.
+**Success Vision:** Fanflare offers secure profiles, digital consents, transparent dashboards, and consent controls for empowerment and trust.
 
-**Fan Community Manager:** Indirect users who benefit from better creator engagement tools.
+**Freelancer: Liam**
+
+Liam is a 32-year-old photographer/freelancer receiving vague bookings and waiting weeks for payments, with disputes from unclear scopes.
+
+**Problem Experience:** Manual tracking, delays, unclear briefs leading to frustration.
+
+**Success Vision:** Clear booking invites, scope logging, instant payouts, and dispute resolution for efficiency.
 
 ### User Journey
 
@@ -111,23 +118,23 @@ Alex is a 28-year-old professional adult entertainer working with multiple agenc
 
 ### User Success Metrics
 
-- **Agency Manager Efficiency:** Reduce time spent on administrative tasks by 50%, measured by time tracking and user surveys.
-- **Creator Satisfaction:** Creators report improved earnings visibility and management support, measured by NPS scores >70.
-- **Fan Engagement:** Increased interaction rates with creators through the platform, measured by session duration and return visits.
+- **Agency Manager Efficiency:** Reduce time spent on administrative tasks by 30-50%, measured by user-reported time logs and task completion rates >90%.
+- **Creator Satisfaction:** Models and freelancers report transparent earnings, consent controls, and collaborative tools, fostering retention and trust, measured by NPS scores >70.
+- **Emotional "Aha!" Moments:** Users feel delighted with unified dashboard, compliance peace, offline magic, and ethical AI partner.
 
 ### Business Objectives
 
-- **Revenue Growth:** Achieve 20-40% increase in agency revenue within 12 months through optimized monetization and creator performance, validated by market research.
-- **Market Penetration:** Onboard 100+ agencies in the first year, targeting underserved AU segment for rapid adoption.
-- **Compliance Excellence:** Zero regulatory violations, with automated compliance checks reducing manual oversight by 80%, leveraging AU-specific features.
+- **Revenue Growth:** Achieve 20-40% year-over-year subscriber and earnings growth per model within 12 months.
+- **Market Penetration:** Onboard agencies in AU segment; 20-30% of target agencies adopting within 18 months.
+- **Compliance Excellence:** Zero major incidents in beta, with 95%+ auto-flagged content accuracy for R18+/ATO requirements.
 
 ### Key Performance Indicators
 
 - **User Acquisition:** 50 new agency signups per month in year 1.
-- **Retention Rate:** 85% agency retention at 6 months, 75% at 12 months.
-- **Revenue per Agency:** Average $10,000 monthly revenue per agency within 6 months.
-- **Compliance Incidents:** <1% of content flagged for regulatory issues.
-- **Platform Usage:** 90% of active agencies using core features weekly.
+- **Retention Rate:** Churn <10% at 3 months, 75% at 12 months.
+- **Revenue Targets:** $500K+ ARR at 12 months from subscriptions and premium features.
+- **Compliance Incidents:** <5% error rates in beta, 95% compliance accuracy.
+- **Platform Usage:** Task success >90%, user-reported burnout reduction.
 
 ## MVP Scope
 

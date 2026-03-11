@@ -42,6 +42,12 @@ interface LocalDb {
 
 const INVITABLE_ROLES: Invitation['role'][] = ['MANAGER', 'MODEL', 'FREELANCER'];
 
+const INVITATION_STATUS_STYLES: Record<Invitation['status'], string> = {
+  pending: 'bg-amber-100 text-amber-900 border border-amber-300',
+  accepted: 'bg-emerald-100 text-emerald-900 border border-emerald-300',
+  expired: 'bg-slate-200 text-slate-900 border border-slate-400',
+};
+
 async function getLocalDb(): Promise<LocalDb> {
   const pouchModule = await import('pouchdb');
   const PouchDB = pouchModule.default;
@@ -199,89 +205,97 @@ export default function Dashboard() {
   if (status === 'loading') return <div>Loading...</div>;
 
   return (
-    <div className="space-y-8 p-6">
-      <section>
-        <h1 className="mb-6 text-3xl">Agency Dashboard</h1>
-        <form onSubmit={createTenant} className="mb-6">
-          <label className="mb-2 block text-sm font-medium">New Tenant Name</label>
-          <input
-            type="text"
-            value={newTenantName}
-            onChange={(e) => setNewTenantName(e.target.value)}
-            className="mr-2 rounded border p-2"
-            required
-          />
-          <button type="submit" className="rounded bg-green-500 p-2 text-white">
-            Create Tenant
-          </button>
-        </form>
-        <h2 className="mb-4 text-2xl">Your Tenants</h2>
-        <ul>
-          {tenants.map((tenant) => (
-            <li key={tenant.id} className="mb-2 rounded border p-2">
-              {tenant.name} - Created: {new Date(tenant.createdAt).toLocaleDateString()}
-            </li>
-          ))}
-        </ul>
+    <div className="space-y-8 p-6 text-white">
+      <section className="glass-card p-6">
+        <div className="glass-content">
+          <h1 className="mb-6 text-3xl">Agency Dashboard</h1>
+          <form onSubmit={createTenant} className="mb-6 flex flex-col gap-3 md:flex-row md:items-end">
+            <div className="flex-1">
+              <label className="mb-2 block text-sm font-medium">New Tenant Name</label>
+              <input
+                type="text"
+                value={newTenantName}
+                onChange={(e) => setNewTenantName(e.target.value)}
+                className="glass-input"
+                required
+              />
+            </div>
+            <button type="submit" className="glass-button">
+              Create Tenant
+            </button>
+          </form>
+          <h2 className="mb-4 text-2xl">Your Tenants</h2>
+          <ul>
+            {tenants.map((tenant) => (
+              <li key={tenant.id} className="mb-2 rounded-xl border border-white/15 bg-white/10 p-3 text-slate-50">
+                {tenant.name} - Created: {new Date(tenant.createdAt).toLocaleDateString()}
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
-      <section className="rounded border p-4">
-        <h2 className="mb-4 text-2xl">Invite users</h2>
-        <form className="grid gap-4 md:grid-cols-[1fr_180px_auto]" onSubmit={createInvitation}>
-          <input
-            type="email"
-            placeholder="teammate@example.com"
-            className="rounded border p-2"
-            value={inviteEmail}
-            onChange={(e) => setInviteEmail(e.target.value)}
-            required
-          />
+      <section className="glass-card p-4">
+        <div className="glass-content">
+          <h2 className="mb-4 text-2xl">Invite users</h2>
+          <form className="grid gap-4 md:grid-cols-[1fr_180px_auto]" onSubmit={createInvitation}>
+            <input
+              type="email"
+              placeholder="teammate@example.com"
+              className="glass-input"
+              value={inviteEmail}
+              onChange={(e) => setInviteEmail(e.target.value)}
+              required
+            />
 
-          <select
-            className="rounded border p-2"
-            value={inviteRole}
-            onChange={(e) => setInviteRole(e.target.value as Invitation['role'])}
-          >
-            {INVITABLE_ROLES.map((role) => (
-              <option key={role} value={role}>
-                {role}
-              </option>
-            ))}
-          </select>
+            <select
+              className="glass-select"
+              value={inviteRole}
+              onChange={(e) => setInviteRole(e.target.value as Invitation['role'])}
+            >
+              {INVITABLE_ROLES.map((role) => (
+                <option key={role} value={role}>
+                  {role}
+                </option>
+              ))}
+            </select>
 
-          <button type="submit" className="rounded bg-black px-4 py-2 text-white">
-            Send invite
-          </button>
-        </form>
+            <button type="submit" className="glass-button">
+              Send invite
+            </button>
+          </form>
 
-        {inviteMessage ? <p className="mt-3 text-sm text-gray-700">{inviteMessage}</p> : null}
+          {inviteMessage ? <p className="glass-muted mt-3 text-sm">{inviteMessage}</p> : null}
 
-        <div className="mt-6 space-y-3">
-          <h3 className="text-lg font-semibold">Invitation links</h3>
-          {invitations.length === 0 ? (
-            <p className="text-sm text-gray-600">No invitations yet.</p>
-          ) : (
-            invitations.map((invitation) => {
-              const acceptUrl = `${inviteBaseUrl}/invite/${invitation.token}`;
+          <div className="mt-6 space-y-3">
+            <h3 className="text-lg font-semibold">Invitation links</h3>
+            {invitations.length === 0 ? (
+              <p className="glass-muted text-sm">No invitations yet.</p>
+            ) : (
+              invitations.map((invitation) => {
+                const acceptUrl = `${inviteBaseUrl}/invite/${invitation.token}`;
 
-              return (
-                <div key={invitation.id} className="rounded border p-3 text-sm">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span>
-                      <strong>{invitation.email}</strong> · {invitation.role}
-                    </span>
-                    <span className="rounded bg-gray-100 px-2 py-1 uppercase tracking-wide text-xs">
-                      {invitation.status}
-                    </span>
+                return (
+                  <div key={invitation.id} className="rounded-xl border border-white/15 bg-white/10 p-3 text-sm text-slate-50">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <span>
+                        <strong>{invitation.email}</strong> · {invitation.role}
+                      </span>
+                      <span
+                        className={`rounded px-2 py-1 text-xs font-semibold uppercase tracking-wide ${INVITATION_STATUS_STYLES[invitation.status]}`}
+                      >
+                        {invitation.status}
+                      </span>
+                    </div>
+                    <p className="mt-2 break-all text-slate-200">{acceptUrl}</p>
+                    <p className="mt-1 text-xs text-slate-300">
+                      Expires {new Date(invitation.expiresAt).toLocaleString()}
+                    </p>
                   </div>
-                  <p className="mt-2 break-all text-gray-700">{acceptUrl}</p>
-                  <p className="mt-1 text-xs text-gray-500">
-                    Expires {new Date(invitation.expiresAt).toLocaleString()}
-                  </p>
-                </div>
-              );
-            })
-          )}
+                );
+              })
+            )}
+          </div>
         </div>
       </section>
     </div>

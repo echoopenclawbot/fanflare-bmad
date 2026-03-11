@@ -21,6 +21,12 @@ export async function POST(request: NextRequest) {
         ownerId: session.user.id,
       },
     });
+
+    await prisma.user.update({
+      where: { id: session.user.id },
+      data: { tenantId: tenant.id },
+    });
+
     return NextResponse.json(tenant);
   } catch {
     return NextResponse.json({ error: 'Failed to create tenant' }, { status: 500 });

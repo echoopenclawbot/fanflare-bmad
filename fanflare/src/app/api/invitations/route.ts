@@ -10,14 +10,32 @@ import {
   normalizeInvitationEmail,
 } from '../../../lib/invitations';
 
+async function resolveOwnerTenantId(userId: string, tenantId?: string) {
+  if (tenantId) {
+    return tenantId;
+  }
+
+  const tenant = await prisma.tenant.findFirst({
+    where: { ownerId: userId },
+    orderBy: { createdAt: 'desc' },
+  });
+
+  return tenant?.id;
+}
+
 export async function GET() {
   const session = await getServerSession(authOptions);
-  if (!session || session.user.role !== 'AGENCY_OWNER' || !session.user.tenantId) {
+  if (!session || session.user.role !== 'AGENCY_OWNER') {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
+  const tenantId = await resolveOwnerTenantId(session.user.id, session.user.tenantId);
+  if (!tenantId) {
+    return NextResponse.json([]);
+  }
+
   const invitations = await prisma.invitation.findMany({
-    where: { tenantId: session.user.tenantId },
+    where: { tenantId },
     orderBy: { createdAt: 'desc' },
   });
 
@@ -37,8 +55,13 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   const session = await getServerSession(authOptions);
-  if (!session || session.user.role !== 'AGENCY_OWNER' || !session.user.tenantId) {
+  if (!session || session.user.role !== 'AGENCY_OWNER') {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const tenantId = await resolveOwnerTenantId(session.user.id, session.user.tenantId);
+  if (!tenantId) {
+    return NextResponse.json({ error: 'Create a tenant before inviting users' }, { status: 400 });
   }
 
   const body = (await request.json()) as { email?: string; role?: string };
@@ -51,7 +74,7 @@ export async function POST(request: NextRequest) {
 
   const existingPendingInvitation = await prisma.invitation.findFirst({
     where: {
-      tenantId: session.user.tenantId,
+      tenantId,
       email,
       status: 'PENDING',
       expiresAt: { gt: new Date() },
@@ -67,7 +90,7 @@ export async function POST(request: NextRequest) {
       email,
       role,
       token: createInvitationToken(),
-      tenantId: session.user.tenantId,
+      tenantId,
       inviterId: session.user.id,
       expiresAt: invitationExpiryDate(),
     },

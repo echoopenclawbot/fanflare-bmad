@@ -37,18 +37,19 @@ model Session {
 }
 
 model User {
-  id             String       @id @default(cuid())
-  name           String?
-  email          String       @unique
-  emailVerified  DateTime?
-  image          String?
-  password       String?
-  role           Role         @default(USER)
-  tenantId       String?
-  accounts       Account[]
-  sessions       Session[]
-  createdTenants Tenant[]     @relation("TenantOwner")
-  invitations    Invitation[] @relation("InvitationInviter")
+  id                String       @id @default(cuid())
+  name              String?
+  email             String       @unique
+  emailVerified     DateTime?
+  image             String?
+  password          String?
+  role              Role         @default(USER)
+  tenantId          String?
+  consentAcceptedAt DateTime?
+  accounts          Account[]
+  sessions          Session[]
+  createdTenants    Tenant[]     @relation("TenantOwner")
+  invitations       Invitation[] @relation("InvitationInviter")
 }
 
 model VerificationToken {

@@ -43,7 +43,7 @@ development_status:
   epic-1: in-progress
   1-1-set-up-next-js-starter-template: done
   1-2-agency-owner-creates-tenant: done
-  1-3-invite-users-and-assign-roles: ready-for-dev
+  1-3-invite-users-and-assign-roles: review
   1-4-user-self-onboarding: backlog
   1-5-manage-user-permissions: backlog
   1-6-offline-onboarding-support: backlog
